@@ -5,15 +5,20 @@ const Login = () => {
 
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
+    const [msgerror, setMsgError] = useState(null)
 
     const RegistrarUsuario = (e) => {
         e.preventDefault()
-        try {
-            auth.createUserWithEmailAndPassword(email, pass)
-            alert('Usuario registrado')
-        } catch (e) {
-            console.log(e)
-        }
+        auth.createUserWithEmailAndPassword(email, pass)
+            .then(r => alert('Usuario registrado'))
+            .catch(e => {
+                if (e.code == 'auth/invalid-email') {
+                    setMsgError('Formato email incorrecto')
+                }
+                if (e.code == 'auth/weak-password') {
+                    setMsgError('La contraseña debe tener al menos 6 caracteres')
+                }
+            })
     }
 
     return (
@@ -25,7 +30,7 @@ const Login = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         className='form-control'
                         placeholder='Ingresa tu email'
-                        type='text'></input>
+                        type='email'></input>
                     <input
                         onChange={(e) => setPass(e.target.value)}
                         className='form-control mt-1'
@@ -36,6 +41,18 @@ const Login = () => {
                         value='Registrar Usuario'
                         type='submit'></input>
                 </form>
+                {
+                    msgerror != null ?
+                        (
+                            <div>
+                                {msgerror}
+                            </div>
+                        )
+                        :
+                        (
+                            <span></span>
+                        )
+                }
             </div>
             <div className='col'></div>
         </div>
