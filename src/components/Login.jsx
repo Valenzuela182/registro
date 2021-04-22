@@ -20,6 +20,15 @@ const Login = () => {
                 }
             })
     }
+    const LoginUsuario = () => {
+        auth.signInWithEmailAndPassword(email, pass)
+            .then((r) => console.log(r))
+            .catch((err) => {
+                if (err.code == 'auth/wrong-password') {
+                    setMsgError('Contraseña incorrecta')
+                }
+            })
+    }
 
     return (
         <div className='row mt-5'>
@@ -41,6 +50,11 @@ const Login = () => {
                         value='Registrar Usuario'
                         type='submit'></input>
                 </form>
+                <button
+                    onClick={LoginUsuario}
+                    className='btn btn-success btn-block'>
+                    Iniciar Sesion
+                </button>
                 {
                     msgerror != null ?
                         (
