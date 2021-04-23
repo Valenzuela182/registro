@@ -1,23 +1,27 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Admin from './components/Admin';
 import Inicio from './components/Inicio';
 import Login from './components/Login';
 import Menu from './components/Menu';
+import Formulario from './components/Formulario';
 
 function App() {
+
   return (
+
     <div className='container'>
-      <h1>Texto</h1>
-        <Router>
-          <Menu></Menu>
-          <Switch>
-            <Route exact path='/' component={Inicio}></Route>
-            <Route path='/admin' component={Admin}></Route>
-            <Route path='/login' component={Login}></Route>
-          </Switch>
-        </Router>
+      <Router>
+        <Menu></Menu>
+        <Switch>
+          <Route exact path='/' component={Inicio}><Formulario/></Route>
+          <Route path='/admin' component={Admin}></Route>
+          <Route path='/login' component={Login}></Route>
+        </Switch>
+      </Router>
+
     </div>
+    
   );
 }
 
