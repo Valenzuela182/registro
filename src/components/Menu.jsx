@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { auth } from '../firebaseconfig'
 
 const Menu = () => {
+    const historial = useHistory()
     const [usuario, setUsuario] = useState(null)
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
@@ -16,6 +17,7 @@ const Menu = () => {
     const CerrarSesion = () => {
         auth.signOut()
         setUsuario(null)
+        historial.push('/')
     }
 
     return (
@@ -26,10 +28,30 @@ const Menu = () => {
                         <Link className='nav-link' to='/'>Inicio</Link>
                     </li>
                     <li className='nav-item'>
-                        <Link className='nav-link' to='/login'>Login</Link>
+                        {
+                            !usuario ?
+                                (
+                                    <Link className='nav-link' to='/login'>Login</Link>
+                                )
+                                :
+                                (
+                                    <span></span>
+                                )
+                        }
+
                     </li>
                     <li className='nav-item'>
-                        <Link className='nav-link' to='/admin'>Admin</Link>
+                        {
+                            usuario ?
+                                (
+                                    <Link className='nav-link' to='/admin'>Admin</Link>
+
+                                )
+                                :
+                                (
+                                    <span></span>
+                                )
+                        }
                     </li>
                 </ul>
                 {
