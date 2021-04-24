@@ -1,19 +1,22 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import 'firebase/auth'
+import 'firebase/firestore'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAGyP5t0QckBo_RHtrrgqIH6PfuVbgxH-I",
-    authDomain: "registro-ee1a9.firebaseapp.com",
-    projectId: "registro-ee1a9",
-    storageBucket: "registro-ee1a9.appspot.com",
-    messagingSenderId: "1069909904709",
-    appId: "1:1069909904709:web:de211878c59e8f8949422c",
-    measurementId: "G-BNK8GQE1PG"
+    apiKey: "AIzaSyAP-yTShaYl2J6jIkI4sGVLeB5ujb6OlL0",
+    authDomain: "registro-v2.firebaseapp.com",
+    projectId: "registro-v2",
+    storageBucket: "registro-v2.appspot.com",
+    messagingSenderId: "230837729646",
+    appId: "1:230837729646:web:0804cc8105b569c9a8297f",
+    measurementId: "G-K290S6R5DF"
 };
 // Initialize Firebase
 const fire = firebase.initializeApp(firebaseConfig);
 //const firebase.analytics();
 
-const auth = fire.auth();
+const auth = fire.auth()
+const store = fire.firestore()
 
-export { auth };
+export { auth }
+export { store }
