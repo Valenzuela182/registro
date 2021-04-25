@@ -14,14 +14,15 @@ function App() {
       <Router>
         <Menu></Menu>
         <Switch>
-          <Route exact path='/' component={Inicio}><Formulario/></Route>
+          <Route path='/registro' component={Login}></Route>
+          <Route path='/inicio' component={Inicio}><Formulario /></Route>
           <Route path='/admin' component={Admin}></Route>
           <Route path='/login' component={Login}></Route>
         </Switch>
       </Router>
 
     </div>
-    
+
   );
 }
 

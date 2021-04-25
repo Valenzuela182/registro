@@ -26,7 +26,7 @@ const Login = () => {
     const LoginUsuario = () => {
         auth.signInWithEmailAndPassword(email, pass)
             .then((r) => {
-                historial.push('/')
+                historial.push('/inicio')
             })
             .catch((err) => {
                 if (err.code === 'auth/wrong-password') {

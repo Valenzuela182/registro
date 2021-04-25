@@ -17,7 +17,7 @@ const Menu = () => {
     const CerrarSesion = () => {
         auth.signOut()
         setUsuario(null)
-        historial.push('/')
+        historial.push('/login')
     }
 
     return (
@@ -25,7 +25,16 @@ const Menu = () => {
             <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
                 <ul className='navbar-nav mr-auto'>
                     <li className='nav-item'>
-                        <Link className='nav-link' to='/'>Inicio</Link>
+                        {
+                            usuario ?
+                                (
+                                    <Link className='nav-link' to='/inicio'>Inicio</Link>
+                                )
+                                :
+                                (
+                                    <span></span>
+                                )
+                        }
                     </li>
                     <li className='nav-item'>
                         {
