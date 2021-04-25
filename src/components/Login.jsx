@@ -12,7 +12,7 @@ const Login = () => {
         e.preventDefault()
         auth.createUserWithEmailAndPassword(email, pass)
             .then(r => {
-                historial.push('/')
+                historial.push('/inicio')
             })
             .catch(e => {
                 if (e.code === 'auth/invalid-email') {
