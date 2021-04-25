@@ -119,7 +119,7 @@ const Formulario = () => {
                             modoEdicion ?
                                 (setUpdate)
                                 :
-                                (setUsuario)
+                                (setUsuarios)
                         }>
                         <input
                             value={nombre}
